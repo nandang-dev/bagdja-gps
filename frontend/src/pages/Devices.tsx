@@ -369,14 +369,41 @@ export default function Devices() {
               >
                 <div>
                   <div style={{ marginBottom: '1rem' }}>
-                    <h3 style={{ 
-                      fontSize: 'clamp(1rem, 4vw, 1.25rem)', 
-                      fontWeight: 'bold', 
-                      marginBottom: '0.5rem',
-                      wordBreak: 'break-word'
+                    <div style={{ 
+                      display: 'flex', 
+                      justifyContent: 'space-between',
+                      alignItems: 'start',
+                      gap: '0.5rem',
+                      marginBottom: '0.5rem'
                     }}>
-                      {device.name}
-                    </h3>
+                      <h3 style={{ 
+                        fontSize: 'clamp(1rem, 4vw, 1.25rem)', 
+                        fontWeight: 'bold', 
+                        wordBreak: 'break-word',
+                        flex: 1
+                      }}>
+                        {device.name}
+                      </h3>
+                      <button
+                        onClick={() => navigate(`/map/${device.id}`)}
+                        style={{
+                          background: '#22c55e',
+                          color: 'white',
+                          border: 'none',
+                          padding: '0.4rem 0.75rem',
+                          borderRadius: '6px',
+                          cursor: 'pointer',
+                          fontSize: 'clamp(0.7rem, 2vw, 0.85rem)',
+                          fontWeight: '500',
+                          whiteSpace: 'nowrap',
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '0.25rem'
+                        }}
+                      >
+                        🗺️ Map
+                      </button>
+                    </div>
                     {device.description && (
                       <p style={{ 
                         color: '#666', 

@@ -17,9 +17,7 @@ export default function Layout({ children }: LayoutProps) {
 
   const menuItems = [
     { path: '/devices', label: 'Devices', icon: '📱' },
-    // Tambahkan menu lain di sini nanti
-    // { path: '/gps-data', label: 'GPS Data', icon: '📍' },
-    // { path: '/map', label: 'Map', icon: '🗺️' },
+    // Menu map akan aktif saat di halaman /map/:deviceId
   ];
 
   return (
@@ -30,7 +28,7 @@ export default function Layout({ children }: LayoutProps) {
         boxShadow: '0 2px 10px rgba(0,0,0,0.1)',
         position: 'sticky',
         top: 0,
-        zIndex: 100
+        zIndex: 1000
       }}>
         <div style={{
           maxWidth: '1200px',

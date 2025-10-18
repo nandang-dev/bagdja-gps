@@ -3,6 +3,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
 import Login from './pages/Login';
 import Devices from './pages/Devices';
+import Map from './pages/Map';
 
 const queryClient = new QueryClient();
 
@@ -95,6 +96,14 @@ function App() {
               element={
                 <ProtectedRoute>
                   <Devices />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/map/:deviceId"
+              element={
+                <ProtectedRoute>
+                  <Map />
                 </ProtectedRoute>
               }
             />
