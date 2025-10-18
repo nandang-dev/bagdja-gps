@@ -1,0 +1,22 @@
+{
+  "name": "bagdja-gps",
+  "version": "1.0.0",
+  "description": "GPS Tracker system with Supabase and React",
+  "main": "index.js",
+  "scripts": {
+    "dev:frontend": "cd frontend && npm run dev",
+    "build:frontend": "cd frontend && npm run build",
+    "preview:frontend": "cd frontend && npm run preview",
+    "deploy:function": "supabase functions deploy gps-receiver"
+  },
+  "keywords": [
+    "gps",
+    "tracker",
+    "supabase",
+    "react",
+    "vite"
+  ],
+  "author": "Nandan Ghermawan",
+  "license": "MIT"
+}
+

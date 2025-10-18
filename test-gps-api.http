@@ -1,0 +1,67 @@
+### Test GPS Receiver API
+### Install REST Client extension di VS Code untuk menggunakan file ini
+
+# Variables
+@supabaseUrl = https://your-project.supabase.co
+@avl = your-device-avl
+@apiKey = your-device-api-key
+
+### Test 1: Send valid GPS data
+POST {{supabaseUrl}}/functions/v1/gps-receiver
+avl: {{avl}}
+api-key: {{apiKey}}
+Content-Type: application/json
+
+{
+  "lat": -6.200000,
+  "lng": 106.816666,
+  "date_time": 1697644800000
+}
+
+### Test 2: Missing AVL header (should fail)
+POST {{supabaseUrl}}/functions/v1/gps-receiver
+api-key: {{apiKey}}
+Content-Type: application/json
+
+{
+  "lat": -6.200000,
+  "lng": 106.816666,
+  "date_time": 1697644800000
+}
+
+### Test 3: Invalid credentials (should fail)
+POST {{supabaseUrl}}/functions/v1/gps-receiver
+avl: invalid-avl
+api-key: invalid-key
+Content-Type: application/json
+
+{
+  "lat": -6.200000,
+  "lng": 106.816666,
+  "date_time": 1697644800000
+}
+
+### Test 4: Invalid lat/lng range (should fail)
+POST {{supabaseUrl}}/functions/v1/gps-receiver
+avl: {{avl}}
+api-key: {{apiKey}}
+Content-Type: application/json
+
+{
+  "lat": 200.0,
+  "lng": 300.0,
+  "date_time": 1697644800000
+}
+
+### Test 5: Invalid data format (should fail)
+POST {{supabaseUrl}}/functions/v1/gps-receiver
+avl: {{avl}}
+api-key: {{apiKey}}
+Content-Type: application/json
+
+{
+  "lat": "not-a-number",
+  "lng": "not-a-number",
+  "date_time": "not-a-number"
+}
+
