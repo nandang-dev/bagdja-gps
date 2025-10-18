@@ -489,12 +489,13 @@ export default function Devices() {
                   <div style={{ 
                     display: 'flex', 
                     gap: '0.5rem', 
-                    flexWrap: 'wrap'
+                    flexWrap: 'wrap',
+                    justifyContent: isMobile ? 'flex-start' : 'flex-end'
                   }}>
                     <button
                       onClick={() => toggleActive(device)}
                       style={{
-                        flex: '1 1 auto',
+                        flex: isMobile ? '1 1 auto' : '0 1 auto',
                         minWidth: 'fit-content',
                         padding: '0.6rem 0.8rem',
                         borderRadius: '6px',
@@ -511,7 +512,7 @@ export default function Devices() {
                     <button
                       onClick={() => openEditModal(device)}
                       style={{
-                        flex: '1 1 auto',
+                        flex: isMobile ? '1 1 auto' : '0 1 auto',
                         minWidth: 'fit-content',
                         padding: '0.6rem 0.8rem',
                         borderRadius: '6px',
@@ -528,7 +529,7 @@ export default function Devices() {
                     <button
                       onClick={() => handleDelete(device.id)}
                       style={{
-                        flex: '1 1 auto',
+                        flex: isMobile ? '1 1 auto' : '0 1 auto',
                         minWidth: 'fit-content',
                         padding: '0.6rem 0.8rem',
                         borderRadius: '6px',

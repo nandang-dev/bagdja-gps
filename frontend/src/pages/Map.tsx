@@ -186,14 +186,19 @@ export default function Map() {
   };
 
   const formatDate = (timestamp: number) => {
-    return new Date(timestamp).toLocaleString('id-ID', {
+    const date = new Date(timestamp);
+    const dateStr = date.toLocaleDateString('id-ID', {
       year: 'numeric',
       month: 'long',
-      day: 'numeric',
+      day: 'numeric'
+    });
+    const timeStr = date.toLocaleTimeString('id-ID', {
       hour: '2-digit',
       minute: '2-digit',
-      second: '2-digit'
+      second: '2-digit',
+      hour12: false
     });
+    return `${dateStr} ${timeStr}`;
   };
 
   const openInGoogleMaps = () => {
@@ -286,7 +291,12 @@ export default function Map() {
               {device?.description || 'Posisi device terkini'}
               {lastUpdate && (
                 <span style={{ color: '#999', marginLeft: '0.5rem' }}>
-                  • Update: {lastUpdate.toLocaleTimeString('id-ID')}
+                  • Update: {lastUpdate.toLocaleTimeString('id-ID', {
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit',
+                    hour12: false
+                  })}
                 </span>
               )}
             </p>
@@ -426,7 +436,16 @@ export default function Map() {
                   color: '#999',
                   marginTop: '0.5rem'
                 }}>
-                  Data diterima: {new Date(latestGps.created_at).toLocaleString('id-ID')}
+                  Data diterima: {new Date(latestGps.created_at).toLocaleDateString('id-ID', {
+                    day: 'numeric',
+                    month: 'short',
+                    year: 'numeric'
+                  })} {new Date(latestGps.created_at).toLocaleTimeString('id-ID', {
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit',
+                    hour12: false
+                  })}
                 </p>
               </div>
 
